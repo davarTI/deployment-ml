@@ -48,5 +48,3 @@ This folder contains all workflow for continuous integration and deployment, tes
 
 
 You can test the API [here](https://deployment-intro-ml-service-tkjyn7djeq-uc.a.run.app)
-
-Also yo can reach me in Twitter as [@gersonrpq](https://twitter.com/gersonrpq)
