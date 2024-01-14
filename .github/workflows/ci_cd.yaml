@@ -29,17 +29,19 @@ jobs:
           pip install dvc-gs
           export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
           dvc pull model/model.pkl.dvc -r model-track
-      - name: Set up GCLOUD SDK
-        uses: google-github-actions/setup-gcloud@v2
+      - id: 'Auth service account'
+        uses: 'google-github-actions/auth@v2'
         with:
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
           project_id: ${{ secrets.PROJECT_ID }}
+      - name: Set up GCLOUD SDK
+        uses: 'google-github-actions/setup-gcloud@v2'          
       - name: Build and Push
         run: |
           gcloud auth configure-docker \
           us-central1-docker.pkg.dev
           docker build . -t $REGISTRY_NAME:$GITHUB_SHA
-          sudo -u $USER docker push $REGISTRY_NAME:$GITHUB_SHA
+          sudo -u $USER docker push $REGISTRY_NAME/imgpipe:$GITHUB_SHA
       - name: Deploy to Cloud Run
         run: |
           gcloud run services update $SERVICE_NAME --region=$REGION --image=$REGISTRY_NAME:$GITHUB_SHA
