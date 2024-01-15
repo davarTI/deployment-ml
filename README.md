@@ -47,4 +47,4 @@ This folder contains all workflow for continuous integration and deployment, tes
 
 
 
-You can test the API [here](https://deployment-intro-ml-service-tkjyn7djeq-uc.a.run.app)
+You can test the API [here](https://mlops-test-crtceyy47a-uc.a.run.app)
