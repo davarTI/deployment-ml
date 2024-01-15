@@ -23,13 +23,13 @@ jobs:
            export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
            echo "Pulling Data"
            
-           dvc pull finantials.csv.dvc -r dataset-track
+           dvc pull dataset/finantials.csv.dvc -r dataset-track
            dvc unprotect finantials.csv
            
-           dvc pull movies.csv.dvc -r dataset-track
+           dvc pull dataset/movies.csv.dvc -r dataset-track
            dvc unprotect movies.csv
            
-           dvc pull opening_gross.csv.dvc  -r dataset-track
+           dvc pull dataset/opening_gross.csv.dvc  -r dataset-track
            dvc unprotect opening_gross.csv
            
            echo "Updating Data"
