@@ -48,11 +48,11 @@ jobs:
            echo "Data Update Finished"
       - name: Commit .dvc file changes
         run: |
-          git config --local user.email "ing.gersonp@gmail.com"
+          git config --local user.email "davarmijos@hotmail.com"
           git config --local user.name "github-actions[bot]"
-          git add finantials.csv.dvc
-          git add movies.csv.dvc
-          git add opening_gross.csv.dvc
+          git add dataset/finantials.csv.dvc
+          git add dataset/movies.csv.dvc
+          git add dataset/opening_gross.csv.dvc
           git commit -m "Updating Data serialization"
       - uses: ad-m/github-push-action@master
         with:
